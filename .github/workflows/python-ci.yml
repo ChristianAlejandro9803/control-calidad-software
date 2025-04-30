@@ -11,12 +11,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - name: Checkout del código
+      uses: actions/checkout@v3
 
     - name: Configurar Python
       uses: actions/setup-python@v4
       with:
-        python-version: '3.10'
+        python-version: '3.12'
 
     - name: Instalar dependencias
       run: |
@@ -27,10 +28,8 @@ jobs:
       run: |
         python -m pytest
 
-    - name: Análisis SonarCloud
-      uses: SonarSource/sonarcloud-github-action@master
-      with:
-        projectBaseDir: .
+    - name: Análisis SonarCloud (nuevo scanner)
+      uses: SonarSource/sonarqube-scan-action@v5.0.0
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         SONAR_PROJECT_KEY: christianalejandro9803_control-calidad-software
