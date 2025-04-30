@@ -22,3 +22,5 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+# Este es un cambio para probar CI con SonarCloud
