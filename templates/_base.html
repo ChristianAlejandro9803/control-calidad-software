@@ -1,0 +1,67 @@
+{% load compress %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Movies Site</title>
+
+	<link rel="stylesheet" href="{% static 'output.css' %}">
+</head>
+
+<body class="bg-desert_sand">
+	<!-- HEADER -->
+	<nav class='flex justify-between w-full bg-pumpkin p-4'>
+		<a href="{% url 'index' %}">
+			<h1 class="text-2xl italic text-black hover:text-beige">My Movies</h1>
+		</a>
+		<ul class='flex flex-row space-x-4 sm:space-x-8'>
+			<a class="flex justify-center items-center bg-pumpkin border-beige border-2 w-16 sm:w-32 hover:bg-beige active:bg-electric_blue active:shadow-inner" href="{% url 'index' %}">			
+				<li class="flex justify-center items-center text-beige hover:text-pumpkin active:text-pumpkin active:shadow-inner w-full h-full">
+					Home
+				</li>
+			</a>
+			{% if user.is_authenticated %}
+			<a class="flex justify-center items-center bg-pumpkin border-beige border-2 w-16 sm:w-32 hover:bg-beige active:bg-electric_blue active:shadow-inner" href="{% url 'my_user' %}">			
+				<li class="flex justify-center items-center text-beige hover:text-pumpkin active:text-pumpkin active:shadow-inner w-full h-full">
+					My Reviews
+				</li>
+			</a>
+			<a class="flex justify-center items-center bg-pumpkin border-beige border-2 w-16 sm:w-32 hover:bg-beige active:bg-electric_blue active:shadow-inner" href="{% url 'logout' %}">			
+				<li class="flex justify-center items-center text-beige hover:text-pumpkin active:text-pumpkin active:shadow-inner w-full h-full">
+					Logout
+				</li>
+			</a>
+			{% else %}
+			<a class="flex justify-center items-center bg-pumpkin border-beige border-2 w-16 sm:w-32 hover:bg-beige active:bg-electric_blue active:shadow-inner" href="{% url 'login' %}">			
+				<li class="flex justify-center items-center text-beige hover:text-pumpkin active:text-pumpkin active:shadow-inner w-full h-full">
+					Login
+				</li>
+			</a>
+			{% endif %}
+		</ul>
+	</nav>
+	<!--Main Content-->
+	<div class="flex flex-col h-screen mx-auto">
+		{% block content %}
+		{% endblock content %}
+		<!-- FOOTER -->
+	</div>
+</body>
+
+</html>
+
+<!--					{% if user.is_authenticated %}
+						<li>
+							<a href="{% url 'logout' %}" class="text-green-800">Logout</a>
+						</li>
+					{% else %}
+						<li>
+							<a href="{% url 'login' %}" class="text-green-800">Login</a>
+						</li>
+					{% endif %}
+-->
