@@ -1,12 +1,10 @@
-# tests/test_main.py
+import sys
+import os
 
-def test_suma_basica():
-    assert 2 + 2 == 4
+# Agrega la carpeta raíz del proyecto al path de Python
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-def test_multiplicacion():
-    assert 3 * 3 == 9
+from main import saludar
 
-def test_fallo_controlado():
-    assert 5 != 10
-
-
+def test_saludo():
+    assert saludar() == "Hola mundo"
