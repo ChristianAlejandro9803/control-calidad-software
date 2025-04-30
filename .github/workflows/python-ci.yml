@@ -32,5 +32,5 @@ jobs:
       uses: SonarSource/sonarqube-scan-action@v5.0.0
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        SONAR_PROJECT_KEY: christianalejandro9803_control-calidad-software
-        SONAR_ORGANIZATION: christianalejandro9803
+
+        
